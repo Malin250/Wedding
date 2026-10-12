@@ -501,6 +501,20 @@ section:not(.hero-band)::before{background:linear-gradient(90deg,transparent,rgb
 html.motion-ready .inv .wrap.reveal{opacity:0;transform:perspective(1400px) rotateX(10deg) translateY(28px);transform-origin:center top}
 html.motion-ready .inv .wrap.reveal.in{opacity:1;transform:perspective(1400px) rotateX(0) translateY(0);transition:opacity 1s var(--ease),transform 1.25s var(--ease)}
 .invitation-card{background:rgba(255,255,255,.24)!important;border-color:rgba(161,122,79,.56)!important;box-shadow:0 12px 35px rgba(76,54,37,.08)!important}
+.verse-page{min-height:100svh;display:grid;place-items:center;gap:2rem;isolation:isolate;overflow:hidden;padding-top:clamp(6rem,12vh,8rem);padding-bottom:clamp(4rem,8vh,6rem);text-align:center;background-color:#30211a;background-image:linear-gradient(rgba(40,27,21,.42),rgba(40,27,21,.62)),url("assets/images/tablescape.webp"),url("assets/images/dinner.webp");background-position:center;background-size:cover;background-repeat:no-repeat}
+.verse-card{position:relative;width:min(100%,780px);padding:clamp(2.5rem,7vw,5rem);border:1px solid rgba(166,128,85,.9);background:rgba(248,243,234,.95);color:#392920;box-shadow:0 30px 90px rgba(20,13,9,.38)}
+.verse-card:before{content:"";position:absolute;inset:10px;border:1px solid rgba(166,128,85,.52);pointer-events:none}
+.verse-mark{display:block;margin:0 auto 1rem;color:#97704b;font:italic 1.1rem var(--serif)}
+.verse-kicker{color:#79583c;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase}
+.verse-card h2{margin:.55rem 0 1.6rem;color:#51382d;font-size:clamp(1.5rem,4vw,2.2rem)}
+.verse-card blockquote{max-width:28ch;margin:0 auto;font:italic 400 clamp(1.6rem,4.7vw,2.7rem)/1.42 var(--serif);color:#392920}
+.verse-card cite{display:block;margin-top:1.4rem;color:#79583c;font:500 .86rem var(--sans);font-style:normal;letter-spacing:.14em;text-transform:uppercase}
+.verse-continue{display:inline-flex;align-items:center;gap:.7rem;color:#fff8ed;text-decoration:none;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;transition:color .25s ease,transform .25s ease}
+.verse-continue:hover{color:#e5cba7;transform:translateY(3px)}
+.inv .wrap{outline:1px solid rgba(224,197,160,.62);outline-offset:6px}
+.inv .photo-frame{background:linear-gradient(145deg,#fffaf2,#e8dcc9)!important;border-color:#ae8559!important;box-shadow:0 18px 45px rgba(62,42,29,.2)!important}
+.invitation-card{position:relative!important;background:#fffaf2!important;border-color:rgba(161,122,79,.72)!important;box-shadow:inset 0 0 0 5px rgba(161,122,79,.07),0 12px 35px rgba(76,54,37,.08)!important}
+.invitation-card:before{content:"";position:absolute;inset:8px;border:1px solid rgba(161,122,79,.26);pointer-events:none}
 #program,#venues,#rsvp{background:#f5efe6;color:#30241d}
 #program h2,#program .sub,#venues h2,#venues .sub,#rsvp h2{color:#52392d}
 .prog time{color:#8c6848}
@@ -568,6 +582,7 @@ footer .footer-nav a:hover,footer .footer-nav a:focus-visible{color:#e4c79c}
   <span data-rw="Asifiwe &amp; Didier">Asifiwe &amp; Didier</span>
  </a>
  <nav>
+  <a href="#verse" data-rw="Ijambo">Verse</a>
   <a href="#invitation" data-rw="Ubutumire">Invitation</a>
   <a href="#program" data-rw="Gahunda">Program</a>
   <a href="#countdown" data-rw="Igihe gisigaye">Countdown</a>
@@ -605,6 +620,17 @@ footer .footer-nav a:hover,footer .footer-nav a:focus-visible{color:#e4c79c}
  </div>
 </section>
 
+<section class="verse-page" id="verse" aria-labelledby="verse-title">
+ <div class="verse-card reveal">
+  <span class="verse-mark" aria-hidden="true">✦</span>
+  <p class="verse-kicker" data-rw="Ijambo ry'Imana">A promise in His word</p>
+  <h2 id="verse-title" data-rw="Isezerano rishingiye ku kwizera">A promise grounded in faith</h2>
+  <blockquote data-rw="Bityo rero ntibaba bakiri babiri, ahubwo baba umubiri umwe. Nuko rero icyo Imana yafatanyije, umuntu ntakagitandukanye.">Therefore they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.</blockquote>
+  <cite data-rw="Matayo 19:6">Matthew 19:6</cite>
+ </div>
+ <a class="verse-continue" href="#invitation"><span data-rw="Komeza ku butumire">Continue to the invitation</span><span aria-hidden="true">↓</span></a>
+</section>
+
 <section class="dark inv" id="invitation">
  <div class="wrap invite-layout reveal">
   <div class="photo-panel">
@@ -613,8 +639,6 @@ footer .footer-nav a:hover,footer .footer-nav a:focus-visible{color:#e4c79c}
    </div>
   </div>
   <div class="invitation-card">
-   <blockquote data-rw="Bityo rero ntibaba bakiri babiri, ahubwo baba umubiri umwe. Nuko rero icyo Imana yafatanyije, umuntu ntakagitandukanye.">Therefore they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.</blockquote>
-   <cite data-rw="Matayo 19:6">Matthew 19:6</cite>
    <p data-rw="Ababyeyi babatumira:">Invited by the parents</p>
    <p><strong>HABYARIMANA FULGENCE</strong><br><span data-rw="na">and</span> <strong>SAFARI JEAN BOSCO</strong></p>
    <p data-rw="bishimiye kubatumira mu bukwe bw'abana babo:">request the honor of your presence at the wedding of their children:</p>
@@ -746,6 +770,7 @@ footer .footer-nav a:hover,footer .footer-nav a:focus-visible{color:#e4c79c}
  </div>
  <nav class="footer-nav" aria-label="Wedding sections">
   <a href="#top" data-rw="Hejuru">Home</a>
+  <a href="#verse" data-rw="Ijambo">Verse</a>
   <a href="#invitation" data-rw="Ubutumire">Invitation</a>
   <a href="#program" data-rw="Gahunda">Program</a>
   <a href="#countdown" data-rw="Igihe gisigaye">Countdown</a>
@@ -847,7 +872,7 @@ $$('[data-lang]').forEach(b=>b.onclick=()=>{
 });
 try{const s=localStorage.getItem("lang");if(s==="rw")setLang("rw")}catch(e){}
 /* Reveal whole existing elements once; never wrap translated text. */
-const revealTargets=$$("section h2,section .sub,.inv .wrap,.inv .wrap>blockquote,.inv .wrap>cite,.inv .wrap>p,.inv .wrap>.names,.prog li,.venues>div,.contacts>div,.rsvp>*,.cd>p,.cd>.btn,.gal img,footer>h2,footer>p,footer>#share");
+const revealTargets=$$("section h2,section .sub,.verse-card,.inv .wrap,.inv .wrap>blockquote,.inv .wrap>cite,.inv .wrap>p,.inv .wrap>.names,.prog li,.venues>div,.contacts>div,.rsvp>*,.cd>p,.cd>.btn,.gal img,footer>h2,footer>p,footer>#share");
 const shareButton=$("#share"),timeline=$(".prog");
 revealTargets.forEach(target=>target.classList.add("reveal"));
 countdownGrid.classList.add("reveal");
