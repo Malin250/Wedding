@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<!--
+Design brief:
+1. The aesthetic is a boutique luxury romance with deep wine-black velvet, antique gold, and warm paper tones.
+2. The signature motif is the artistic eye: elegant linework, monogram, and a soft cinematic reveal.
+3. Typography is editorial and romantic, with Bodoni for ceremony, Pinyon for the names, and Jost for the practical details.
+4. Motion is restrained: one orchestrated splash reveal, quiet scroll transitions, and subtle cursor choreography.
+5. The experience stays elegant and resilient across mobile, reduced motion, and multilingual content.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -8,17 +16,18 @@
 <meta property="og:title" content="Asifiwe &amp; Didier — 13 December 2026">
 <meta property="og:description" content="You are warmly invited to our wedding · Rubavu - Gisenyi">
 <meta property="og:type" content="website">
-<meta property="og:image" content="assets/og-image.jpg">
+<meta property="og:image" content="assets/og-image.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Asifiwe &amp; Didier — 13 December 2026">
 <meta name="twitter:description" content="A wedding invitation · Rubavu - Gisenyi, Rwanda">
-<meta name="twitter:image" content="assets/og-image.jpg">
+<meta name="twitter:image" content="assets/og-image.webp">
 <meta name="theme-color" content="#14060B">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M5 32Q32 4 59 32Q32 60 5 32Z' fill='none' stroke='%23B08D57' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='10' fill='none' stroke='%23B08D57' stroke-width='2'/%3E%3Ccircle cx='32' cy='32' r='3' fill='%23E8D3A2'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,600;1,6..96,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
+/* --- design tokens, timing, colors, and particle count --- */
 :root{
  --wine:#4B0F22;--deep:#2E0814;--gold:#B08D57;--pearl:#F6EFE4;--ink:#14060B;--rose:#C98B93;--gold-light:#E8D3A2;--gold-deep:#8A6A3A;--night:#14060B;
  --serif:'Bodoni Moda','Didot','Times New Roman',serif;--script:'Pinyon Script','Bodoni Moda',cursive;--sans:'Jost','Segoe UI',Arial,sans-serif;
@@ -43,8 +52,7 @@ section{padding:clamp(4rem,10vw,7rem) 1.4rem}
 .sub{font-family:var(--serif);font-style:italic;color:var(--gold);margin-bottom:2.5rem}
 .btn{display:inline-block;border:1px solid var(--gold);background:none;color:inherit;font:400 .95rem var(--sans);letter-spacing:.06em;padding:.8rem 1.6rem;cursor:pointer;text-decoration:none;transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .7s cubic-bezier(.22,.61,.36,1)}
 .btn:hover{transform:translateY(-2px);background:var(--gold);color:var(--deep)}
-/* Splash timing: .8s close and .6s language-step crossfade. */
-/* splash */
+/* --- eyelid splash --- */
 #splash{position:fixed;inset:0;z-index:50;display:grid;place-items:center;text-align:center;padding:2rem;color:var(--pearl);
 background:linear-gradient(rgba(46,8,20,.82),rgba(46,8,20,.9)),url(assets/images/red-embrace.webp) center/cover;transform:scale(1);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1),visibility 0s linear .8s}
 #splash.gone{opacity:0;visibility:hidden;transform:scale(1.04)}
@@ -58,7 +66,7 @@ background:linear-gradient(rgba(46,8,20,.82),rgba(46,8,20,.9)),url(assets/images
 #splash.lang .step1{opacity:0;transform:translateY(-10px);pointer-events:none}
 #splash.lang .step2{opacity:1;visibility:visible;transform:translateY(0);transition-delay:0s}
 @keyframes splash-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-/* nav */
+/* --- navigation --- */
 header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:.7rem 1.2rem;padding-top:calc(.7rem + env(safe-area-inset-top,0px));background:rgba(46,8,20,.92);color:var(--pearl);font-size:.9rem;opacity:0;transform:translateY(-12px);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}
 header:before{content:"";position:absolute;inset:0;background:rgba(46,8,20,.97);backdrop-filter:blur(10px);opacity:0;transition:opacity .7s cubic-bezier(.22,.61,.36,1);pointer-events:none}
 header>*{position:relative;z-index:1}
@@ -72,61 +80,83 @@ header nav a:hover{opacity:1;color:var(--gold)}
 .lng button{background:none;border:0;color:inherit;font:inherit;cursor:pointer;opacity:.55;padding:.2rem .3rem}
 .lng button[aria-pressed=true]{opacity:1;color:var(--gold)}
 @media(max-width:700px){header nav{display:none}}
-/* Hero timing: stagger names, then ampersand/date; photo settles over 1.2s. */
-/* hero */
+/* --- hero --- */
 .hero{min-height:100svh;padding-top:5.5rem;display:grid;gap:2rem;align-items:center;max-width:1100px;margin:auto}
 .hero h1{font-size:clamp(4.2rem,17vw,9.5rem);letter-spacing:-.02em;color:var(--wine)}
 .hero h1 .hero-name{display:block}
 .hero h1 i{display:block;font-size:.5em;color:var(--gold);margin:.05em 0 .05em .4em}
 .hero p{font-family:var(--serif);font-size:1.25rem;margin-top:1.5rem;opacity:0;transform:translateY(14px)}
-.hero .ph{position:relative;aspect-ratio:3/4;max-width:430px;width:100%;justify-self:center}
-.hero .ph:before{content:"";position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--gold);opacity:0;transform:translate(-12px,12px)}
-.hero .ph img{position:relative;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08)}
+.scroll-prompt{display:inline-flex;align-items:center;gap:.8rem;letter-spacing:.12em;text-transform:uppercase;font-size:.7rem;color:var(--gold-light);opacity:0;transform:translateY(-10px);margin-bottom:1.2rem;animation:scroll-cue .9s 1.45s both cubic-bezier(.22,.61,.36,1)}
+.scroll-prompt .mouse{position:relative;width:1.6rem;height:2.5rem;border:1px solid rgba(232,211,162,.9);border-radius:999px;background:rgba(20,6,11,.18)}
+.scroll-prompt .mouse:before{content:"";position:absolute;left:50%;top:.5rem;width:2px;height:.7rem;background:linear-gradient(#E8D3A2,#B08D57);border-radius:999px;transform:translateX(-50%);animation:mouse-wheel 1.8s ease-in-out infinite}
+@keyframes scroll-cue{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes mouse-wheel{0%,100%{transform:translate(-50%,0);opacity:0}20%{opacity:1}60%{transform:translate(-50%,.55rem);opacity:1}80%{opacity:0}}
+.hero .ph{position:relative;display:grid;place-items:center;max-width:430px;width:100%;justify-self:center;padding:1.2rem 0 .8rem}
+.hero .ph:before{content:"";position:absolute;inset:2% auto auto 10%;width:78%;height:78%;background:radial-gradient(circle at 30% 30%,rgba(232,211,162,.22),rgba(75,15,34,.05) 42%,transparent 70%);filter:blur(10px);opacity:.9;pointer-events:none}
+.hero .ph .photo-stack{position:relative;width:min(100%,440px);height:min(68vw,520px);max-height:520px;min-height:330px;}
+.hero .ph .photo-stack img{position:absolute;display:block;width:68%;height:66%;object-fit:cover;object-position:center;filter:saturate(1.05) contrast(1.05);box-shadow:0 24px 46px rgba(20,6,11,.28);opacity:0;transform:scale(1.08)}
+.hero .ph .photo-stack img:nth-child(1){left:10%;top:7%;width:58%;height:74%;border-radius:28% 24% 18% 22%/22% 26% 18% 18%;transform:rotate(-8deg) scale(1.07)}
+.hero .ph .photo-stack img:nth-child(2){right:0;bottom:4%;width:58%;height:62%;border-radius:22% 24% 32% 24%/18% 22% 28% 28%;transform:rotate(8deg) scale(1.07)}
+.hero .ph .photo-stack img:nth-child(3){left:24%;bottom:2%;width:58%;height:62%;border-radius:18% 26% 26% 22%/22% 18% 26% 26%;transform:scale(1.08)}
 body.is-open .hero-name:first-child{animation:hero-rise .9s .08s both cubic-bezier(.22,.61,.36,1)}
 body.is-open .hero-name:last-child{animation:hero-rise .9s .3s both cubic-bezier(.22,.61,.36,1)}
 body.is-open .hero h1 i{animation:hero-fade .8s 1.22s both cubic-bezier(.22,.61,.36,1)}
 body.is-open .hero p{animation:hero-rise .9s 1.42s both cubic-bezier(.22,.61,.36,1)}
-body.is-open .hero .ph img{animation:photo-in var(--motion-long) .48s both var(--ease)}
+body.is-open .scroll-prompt{animation:scroll-cue .8s 1.7s both cubic-bezier(.22,.61,.36,1)}
+body.is-open .hero .ph .photo-stack img{animation:photo-in var(--motion-long) .48s both var(--ease)}
+body.is-open .hero .ph .photo-stack img:nth-child(2){animation-delay:.12s}
+body.is-open .hero .ph .photo-stack img:nth-child(3){animation-delay:.2s}
 body.is-open .hero .ph:before{animation:frame-in 1s .68s both cubic-bezier(.22,.61,.36,1)}
 @keyframes hero-rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
 @keyframes hero-fade{from{opacity:0}to{opacity:1}}
 @keyframes photo-in{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:scale(1)}}
 @keyframes frame-in{from{opacity:0;transform:translate(-12px,12px)}to{opacity:1;transform:translate(0,0)}}
 @media(min-width:800px){.hero{grid-template-columns:1.2fr 1fr}.hero h1 i{margin-left:1.2em}}
-/* invitation */
+/* --- invitation card --- */
 .inv{text-align:center}
+.inv .invite-layout{display:grid;gap:2.2rem;align-items:center;}
+.inv .photo-panel{display:flex;justify-content:center}
+.inv .photo-panel .photo-frame{position:relative;width:min(100%,440px);padding:.9rem;background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(232,211,162,.08));border:1px solid rgba(232,211,162,.8);box-shadow:0 24px 44px rgba(0,0,0,.18)}
+.inv .photo-panel .photo-frame:before{content:"";position:absolute;inset:12px;border:1px solid rgba(176,141,87,.7);pointer-events:none}
+.inv .photo-panel img{width:100%;height:100%;aspect-ratio:4/5;object-fit:cover;display:block;filter:saturate(1.06) contrast(1.03)}
+.inv .invitation-card{padding:clamp(1.3rem,4vw,2.4rem);background:rgba(255,255,255,.03);border:1px solid rgba(176,141,87,.7);box-shadow:0 18px 42px rgba(0,0,0,.12);}
 .inv blockquote{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3.5vw,1.8rem);max-width:30ch;margin:0 auto .5rem}
 .inv cite{display:block;font-style:normal;color:var(--gold);margin-bottom:3rem}
 .inv .names{font-family:var(--serif);font-size:clamp(2.4rem,8vw,4.6rem);line-height:1.1;margin:1.5rem 0}
 .inv .names span{display:block;color:var(--gold);font-style:italic;font-size:.5em}
 .inv strong{font-weight:500;letter-spacing:.04em}
 .inv .when{font-family:var(--serif);font-size:1.5rem;margin-top:1.5rem}
-/* program */
+@media(min-width:800px){.inv .invite-layout{grid-template-columns:1fr 1.15fr}.inv .invitation-card{text-align:left}.inv .invitation-card p,.inv .invitation-card blockquote,.inv .invitation-card cite{margin-left:0;margin-right:0}.inv .invitation-card .names{margin-left:0}}
+/* --- timeline --- */
 .prog{list-style:none;padding:0;border-left:0;margin-left:1.2rem;position:relative}
 /* Timeline timing: 1.2s line draw; dots follow their one-shot row reveals. */
 .prog:before{content:"";position:absolute;left:0;top:0;bottom:0;border-left:1px solid var(--gold);transform:scaleY(1);transform-origin:top}
 .motion-ready .prog:before{transform:scaleY(0)}
 .motion-ready .prog.timeline-active:before{transform:scaleY(1);transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
-.prog li{position:relative;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;padding:0 0 3rem 2.2rem;align-items:start}
+.prog li{position:relative;display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;padding:0 0 3rem 2.2rem;align-items:start;border-radius:18px;transition:transform .6s cubic-bezier(.22,.61,.36,1),box-shadow .6s cubic-bezier(.22,.61,.36,1)}
+.prog li:hover{transform:translateX(4px);box-shadow:0 12px 24px rgba(75,15,34,.08)}
 .prog li:nth-child(2){transition-delay:.35s}.prog li:nth-child(3){transition-delay:.7s}
 .prog li:last-child{padding-bottom:0}
-.prog svg{width:3.2rem;height:3.2rem;fill:none;stroke:var(--wine);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.prog svg{width:3.2rem;height:3.2rem;fill:none;stroke:var(--wine);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .7s cubic-bezier(.22,.61,.36,1),stroke .5s ease,filter .5s ease}
+.prog li:hover svg,.prog li:hover time,.prog li:hover h3,.prog li:hover b,.prog li:hover small{transform:translateY(-2px);color:var(--gold-deep);stroke:var(--gold-deep);filter:drop-shadow(0 8px 14px rgba(176,141,87,.15))}
 .prog li:before{content:"";position:absolute;left:-5px;top:1.1rem;width:9px;height:9px;border-radius:50%;background:var(--gold);opacity:1;transform:scale(1)}
 .motion-ready .prog li:before{opacity:0;transform:scale(.35);transition:opacity .6s cubic-bezier(.22,.61,.36,1),transform .6s cubic-bezier(.22,.61,.36,1)}
 .motion-ready .prog li:nth-child(2):before{transition-delay:.35s}.motion-ready .prog li:nth-child(3):before{transition-delay:.7s}
 .motion-ready .prog li.in:before{opacity:1;transform:scale(1)}
-.prog time{font-family:var(--serif);font-size:2rem;color:var(--wine);display:block;line-height:1}
-.prog h3{font-size:1.5rem;margin:.5rem 0 .2rem}
+.prog time{font-family:var(--serif);font-size:2rem;color:var(--wine);display:block;line-height:1;transition:transform .6s cubic-bezier(.22,.61,.36,1),color .5s ease}
+.prog h3{font-size:1.5rem;margin:.5rem 0 .2rem;transition:transform .6s cubic-bezier(.22,.61,.36,1),color .5s ease}
+.prog b, .prog small{transition:transform .6s cubic-bezier(.22,.61,.36,1),color .5s ease}
 .prog small{display:block;opacity:.75}
-/* Countdown parallax and value-change timing are controlled in the script. */
-/* countdown */
+/* --- countdown --- */
 .cd{position:relative;isolation:isolate;overflow:hidden;background:none;color:var(--pearl);text-align:center}
 .cd:before{content:"";position:absolute;inset:-8% 0;z-index:-1;background:linear-gradient(rgba(46,8,20,.8),rgba(46,8,20,.88)),url(assets/images/arms.webp) center 30%/cover;transform:translate3d(0,0,0);will-change:transform}
 .cd>*{position:relative;z-index:1}
 .cd .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;max-width:640px;margin:2rem auto}
+.cd .grid>div{padding:.9rem .5rem;border:1px solid rgba(232,211,162,.2);border-radius:20px;background:rgba(20,6,11,.18);transition:transform .6s cubic-bezier(.22,.61,.36,1),box-shadow .6s cubic-bezier(.22,.61,.36,1),border-color .6s ease}
+.cd .grid>div:hover{transform:translateY(-4px) scale(1.01);box-shadow:0 12px 24px rgba(0,0,0,.18);border-color:rgba(232,211,162,.5)}
 .cd b{display:block;font:400 clamp(2.4rem,11vw,4.6rem)/1 var(--serif);font-variant-numeric:tabular-nums}
 .cd span{font-size:.85rem;color:var(--gold)}
-/* Calendar animation timings and card styles. */
+/* --- calendar --- */
 .calendar-stage{
  position:relative;
  display:grid;
@@ -137,7 +167,9 @@ body.is-open .hero .ph:before{animation:frame-in 1s .68s both cubic-bezier(.22,.
  margin:1.4rem auto 1.8rem;
  perspective:1200px;
  isolation:isolate;
+ transition:transform .6s cubic-bezier(.22,.61,.36,1),filter .6s cubic-bezier(.22,.61,.36,1);
 }
+.calendar-stage:hover{transform:translateY(-3px) scale(1.01);filter:drop-shadow(0 18px 18px rgba(20,6,11,.14));}
 .calendar-stage.is-entered{animation:calendar-drop var(--calendar-drop-duration) cubic-bezier(.22,.61,.36,1) both}
 @keyframes calendar-drop{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 .wedding-calendar{position:relative;width:100%;height:clamp(310px,98vw,340px);max-width:340px;isolation:isolate;transform-style:preserve-3d;background:var(--pearl);cursor:pointer}
@@ -172,41 +204,51 @@ body.is-open .hero .ph:before{animation:frame-in 1s .68s both cubic-bezier(.22,.
 .calendar-replay:hover{transform:rotate(-25deg)}
 .calendar-replay:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 .calendar-stage.instant-reset,.calendar-stage.instant-reset .calendar-cover,.calendar-stage.instant-reset .calendar-cell,.calendar-stage.instant-reset .calendar-circle path,.calendar-stage.instant-reset .calendar-heart,.calendar-stage.instant-reset .wedding-calendar:after{animation:none!important;transition:none!important}
-/* venues */
+/* --- venues --- */
 .venues{display:grid;gap:2.5rem}
 .venues>div:nth-child(2){transition-delay:.2s}
 @media(min-width:800px){.venues{grid-template-columns:1fr 1fr}}
 .venues h3{font-size:1.8rem;margin:.3rem 0}
 .venues iframe{width:100%;height:240px;border:0;margin:1rem 0;filter:grayscale(.4)}
 .venues .t{color:var(--gold);font-family:var(--serif);font-style:italic}
-/* contacts */
+.venues .btn{transition:transform .6s cubic-bezier(.22,.61,.36,1),box-shadow .6s cubic-bezier(.22,.61,.36,1),background .6s ease,color .6s ease}
+.venues .btn:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(176,141,87,.18)}
+/* --- contacts --- */
 .contacts{display:grid;gap:2.5rem}
 .contacts>div:nth-child(2){transition-delay:.2s}
 @media(min-width:700px){.contacts{grid-template-columns:1fr 1fr}}
 .contacts h3{font-size:2.2rem;color:var(--gold);margin-bottom:.8rem}
 .contacts ul{list-style:none;padding:0}
-.contacts li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px solid rgba(245,243,240,.2);padding:.7rem 0}
+.contacts li{display:flex;justify-content:space-between;align-items:center;gap:1rem;border-bottom:1px solid rgba(245,243,240,.2);padding:.7rem 0}
 .contacts a{text-decoration:none}
 .contacts a:hover{color:var(--gold)}
-/* rsvp */
+.contact-actions{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;justify-content:flex-end}
+.contact-btn{display:inline-flex;align-items:center;justify-content:center;min-height:2.4rem;padding:.55rem .85rem;border-radius:999px;border:1px solid rgba(176,141,87,.7);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.02em;transition:transform .6s cubic-bezier(.22,.61,.36,1),box-shadow .6s cubic-bezier(.22,.61,.36,1),background .6s ease,color .6s ease}
+.contact-btn.whatsapp{background:rgba(176,141,87,.08);color:var(--wine)}
+.contact-btn.call{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--deep)}
+.contact-btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(0,0,0,.12)}
+/* --- rsvp --- */
 .rsvp{display:grid;gap:2rem;align-items:center}
 .rsvp>:nth-child(2){transition-delay:.2s}
 @media(min-width:800px){.rsvp{grid-template-columns:1fr 1fr}}
-.rsvp img{width:100%;max-height:560px;object-fit:cover}
+.rsvp img{width:100%;max-height:560px;object-fit:cover;border-radius:24px;box-shadow:0 24px 48px rgba(20,6,11,.12)}
 .rsvp label{display:block;margin:1rem 0 .3rem;font-size:.95rem}
-.rsvp input,.rsvp select{width:100%;font:inherit;padding:.8rem;border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:0}
+.rsvp input,.rsvp select{width:100%;font:inherit;padding:.9rem 1rem;border:1px solid rgba(75,15,34,.2);background:rgba(255,255,255,.9);color:var(--ink);border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.5);transition:border-color .5s ease,box-shadow .5s ease,transform .5s ease}
+.rsvp input:focus,.rsvp select:focus{border-color:rgba(176,141,87,.8);box-shadow:0 0 0 4px rgba(176,141,87,.12);outline:none}
 .rsvp .btn{margin-top:1.5rem;color:var(--wine)}
-/* Gallery images reveal with a subtle scale; hover zoom is hover-device only. */
-/* gallery */
+/* --- gallery --- */
 .gal{columns:2 160px;gap:.8rem;max-width:1000px;margin:auto}
 .gal img{width:100%;margin-bottom:.8rem;clip-path:inset(0)}
 .gal img:nth-child(2){transition-delay:.08s}.gal img:nth-child(3){transition-delay:.16s}.gal img:nth-child(4){transition-delay:.24s}.gal img:nth-child(5){transition-delay:.32s}.gal img:nth-child(6){transition-delay:.4s}.gal img:nth-child(7){transition-delay:.48s}
 @media(hover:hover){.gal img.in{transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform .9s cubic-bezier(.22,.61,.36,1)}.gal img.in:hover{transform:scale(1.03);transition:opacity .9s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1)}}
-/* Footer message reveals once; the share button receives one soft JS pulse. */
-footer{text-align:center;padding:4rem 1.4rem calc(3rem + env(safe-area-inset-bottom,0px))}
+/* --- footer --- */
+footer{text-align:center;padding:4rem 1.4rem calc(3rem + env(safe-area-inset-bottom,0px));background:linear-gradient(180deg,var(--deep),var(--night));border-top:1px solid rgba(176,141,87,.55)}
 footer h2{color:var(--gold);font-size:clamp(1.6rem,5vw,2.4rem)}
 footer p{margin:.4rem 0}
-/* Music disk: slow rotation while playing; the reduced-motion rule disables it. */
+footer .footer-cta{display:flex;justify-content:center;flex-wrap:wrap;gap:1rem;margin-top:1.2rem}
+footer .btn{min-width:200px}
+footer .fine-print{margin-top:2rem;font-size:.85rem;opacity:.7;letter-spacing:.08em;text-transform:uppercase}
+/* --- music control --- */
 #music{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:30;width:50px;height:50px;border-radius:50%;border:1px solid var(--gold);background:var(--deep);color:var(--gold);cursor:pointer;display:grid;place-items:center;transition:transform .7s cubic-bezier(.22,.61,.36,1)}
 #music[hidden]{display:none}
 #music:hover{transform:translateY(-2px)}
@@ -214,7 +256,7 @@ footer p{margin:.4rem 0}
 #music:after{content:"";grid-area:1/1;position:relative;z-index:1;width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 3px var(--deep)}
 #music.is-playing:before{animation:record-spin var(--record-spin-duration) linear infinite}
 @keyframes record-spin{to{transform:rotate(360deg)}}
-/* Scroll reveals: JS adds these classes only after it is ready. */
+/* --- reveal transitions --- */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity var(--motion-slow) var(--ease),transform var(--motion-slow) var(--ease)}
 .reveal.in{opacity:1;transform:translateY(0)}
 /* Reduced motion: render entrances and reveals in their final state. */
@@ -413,6 +455,77 @@ body.cursor-ready,body.cursor-ready a,body.cursor-ready button,body.cursor-ready
  .cursor-ring{transition:none!important}
 }
 @media(max-width:39px){.eye-logo .lash{display:none}}
+/* Chocolate, ivory, and candlelit brass palette. */
+:root{--wine:#51382d;--deep:#30211a;--gold:#a47d4e;--pearl:#f6f0e7;--ink:#30241d;--rose:#c49b82;--gold-light:#ddc7a4;--gold-deep:#79583c;--night:#30211a}
+html{scrollbar-color:#a47d4e #30211a}
+body{background:var(--pearl);color:var(--ink)}
+::selection{background:#b98b61;color:#fffaf3}
+section{background:var(--night);color:var(--pearl)}
+section:not(.hero-band)::before{background:linear-gradient(90deg,transparent,rgba(184,145,102,.72),transparent)}
+.dark{background:var(--deep);color:var(--pearl)}
+.hero-band{background:linear-gradient(90deg,rgba(40,27,21,.91),rgba(49,33,25,.72) 52%,rgba(45,31,24,.66)),url(assets/og-image.webp) center 42%/cover;color:#fffaf2}
+.hero{min-height:calc(100svh - 2rem);padding-top:6rem}
+.hero h1{color:#fff8ed}
+.hero h1 i{color:#dfc5a0}
+.hero p{color:#fffaf2}
+.scroll-prompt{color:#f4e3c8}
+.scroll-prompt .mouse{border-color:rgba(255,248,237,.8)}
+.hero .ph{filter:drop-shadow(0 25px 35px rgba(31,20,15,.38))}
+.hero .ph:before{border-color:#ead7b8;background:none}
+.hero .ph:after{border-color:rgba(234,215,184,.52)}
+.hero .ph .photo-stack{position:relative;width:100%;height:auto;aspect-ratio:4/5;min-height:0;max-height:620px;overflow:hidden;border-radius:52% 52% 46% 46%/35% 35% 28% 28%;background:#4a3429}
+.hero .ph .photo-stack img{inset:0!important;width:100%!important;height:100%!important;object-fit:cover;object-position:center 38%;border-radius:inherit!important;box-shadow:none;filter:saturate(.9) contrast(1.04);opacity:0;transform:scale(1.055)!important;animation:none!important;transition:opacity 1s var(--ease),transform 6s ease}
+.hero .ph .photo-stack img.is-active{opacity:1;transform:scale(1)!important}
+.hero-slideshow-controls{position:absolute;z-index:2;left:50%;bottom:1rem;display:flex;align-items:center;gap:.5rem;padding:.35rem .55rem;border:1px solid rgba(255,248,237,.5);border-radius:999px;background:rgba(42,28,21,.64);backdrop-filter:blur(8px);transform:translateX(-50%)}
+.hero-slideshow-controls button{display:grid;place-items:center;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:transparent;color:#fffaf2;font:400 1rem var(--sans);cursor:pointer}
+.hero-slideshow-controls button:hover,.hero-slideshow-controls button:focus-visible{background:rgba(255,248,237,.17)}
+.hero-slide-dots{display:flex;align-items:center;gap:.4rem}
+.hero-slide-dots button{width:8px;height:8px;border:1px solid rgba(255,248,237,.85);transition:background .3s ease,transform .3s ease}
+.hero-slide-dots button[aria-pressed=true]{background:#ead7b8;transform:scale(1.18)}
+#splash{background:linear-gradient(rgba(39,26,20,.68),rgba(39,26,20,.77)),url(assets/og-image.webp) center 40%/cover;color:#fffaf2}
+#splash:before,#splash:after{background:rgba(47,32,24,.14)}
+#splash .splash-brand{margin-bottom:.75rem}
+#splash .splash-brand-name{font-size:clamp(1.6rem,5vw,2.35rem);color:#fff1dc}
+#splash .splash-kicker{font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:#f3dfc1}
+#splash h1{font:400 clamp(2.8rem,9vw,5.4rem)/1.08 var(--serif);color:#e2c49a;margin:.65rem 0 .15rem}
+#splash .splash-rw{font:italic clamp(1.35rem,5vw,2rem)/1.3 var(--script);color:#f5ead8}
+#splash .splash-language{margin-top:1.4rem}
+#splash .splash-language>p{font:italic 1.2rem/1.4 var(--serif);color:#fff8ed}
+#splash .splash-language>p span{display:block;font-family:var(--script);font-size:1.25em;color:#e6d0b1}
+#splash .splash-language .row{margin-top:1rem}
+#splash .splash-language .btn{min-width:min(12rem,42vw);min-height:52px;border:1px solid rgba(244,228,203,.7);border-radius:999px;background:rgba(255,250,242,.08);color:#fffaf2;font:400 1.05rem var(--serif);letter-spacing:.02em;backdrop-filter:blur(5px)}
+#splash .splash-language .btn:hover{background:rgba(255,250,242,.18);color:#fffaf2;box-shadow:0 8px 22px rgba(0,0,0,.2)}
+.inv{background:var(--deep)}
+.inv .wrap{background:#f7f1e8;border-color:#b18c61;box-shadow:0 30px 90px rgba(20,13,9,.34);transform-origin:center top}
+.inv .wrap:before{border-color:rgba(161,122,79,.5)}
+html.motion-ready .inv .wrap.reveal{opacity:0;transform:perspective(1400px) rotateX(10deg) translateY(28px);transform-origin:center top}
+html.motion-ready .inv .wrap.reveal.in{opacity:1;transform:perspective(1400px) rotateX(0) translateY(0);transition:opacity 1s var(--ease),transform 1.25s var(--ease)}
+.invitation-card{background:rgba(255,255,255,.24)!important;border-color:rgba(161,122,79,.56)!important;box-shadow:0 12px 35px rgba(76,54,37,.08)!important}
+#program,#venues,#rsvp{background:#f5efe6;color:#30241d}
+#program h2,#program .sub,#venues h2,#venues .sub,#rsvp h2{color:#52392d}
+.prog time{color:#8c6848}
+.prog li:hover{box-shadow:0 12px 24px rgba(66,46,32,.1)}
+.cd:before{background:linear-gradient(rgba(43,29,22,.82),rgba(43,29,22,.88)),url(assets/images/dinner.webp) center 42%/cover}
+.cd .grid>div{background:rgba(255,250,242,.08);border-color:rgba(232,211,162,.54)}
+#venues .venues>div{background:#fffaf3;border-color:rgba(161,122,79,.55);box-shadow:0 16px 36px rgba(58,39,26,.09)}
+#contacts{background:#51382d}
+#contacts .contacts>div{background:#f7f1e8!important;border-color:#b18c61!important;color:#30241d}
+.contacts h3{color:#52392d}
+.contacts li{border-color:rgba(81,56,45,.2)}
+.contact-btn{border-color:rgba(142,104,67,.62);font-weight:500}
+.contact-btn.call{background:#e9ddc9;color:#493326}
+.contact-btn.whatsapp{background:#fffaf3;color:#493326}
+.contact-btn:hover{box-shadow:0 8px 18px rgba(66,46,32,.16)}
+#rsvp input,#rsvp select{background:#fffaf4;border-color:rgba(81,56,45,.32)}
+.gallery-section{background:#30211a}
+footer{background:linear-gradient(180deg,#493226,#2a1d17);border-top-color:rgba(222,196,160,.6)!important}
+footer h2{color:#efddc1}
+footer .footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.65rem 1.4rem;max-width:760px;margin:2rem auto 0;padding:1rem 0;border-top:1px solid rgba(232,211,162,.28);border-bottom:1px solid rgba(232,211,162,.28)}
+footer .footer-nav a{color:#f6eee3;text-decoration:none;font-size:.9rem;transition:color .25s ease}
+footer .footer-nav a:hover,footer .footer-nav a:focus-visible{color:#e4c79c}
+@media(min-width:800px){.inv .invite-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}.inv .photo-panel,.inv .invitation-card{min-width:0}}
+@media(max-width:760px){.hero-band{background-position:center,58% center}.hero .ph{max-width:min(70vw,340px)}.hero .ph .photo-stack{aspect-ratio:4/5}.hero-slideshow-controls{bottom:.7rem}}
+@media(prefers-reduced-motion:reduce){.hero .ph .photo-stack img{transition:none!important}}
 </style>
 </head>
 <body>
@@ -433,13 +546,13 @@ body.cursor-ready,body.cursor-ready a,body.cursor-ready button,body.cursor-ready
     </svg>
     <span class="splash-brand-name" data-rw="Asifiwe &amp; Didier">Asifiwe &amp; Didier</span>
    </div>
-   <h1 data-rw="Ubutumire bw'ubukwe">Wedding Invitation</h1>
-   <!-- RW: needs native review -->
-   <button class="btn" id="start">Open invitation · Fungura</button>
-  </div>
-  <div class="step2">
-   <h1 style="font-size:clamp(1.8rem,6vw,2.6rem)">Choose your language<br><i style="font-size:.6em;color:var(--gold)">Hitamo ururimi</i></h1>
-   <div class="row"><button class="btn" data-lang="en">English</button><button class="btn" data-lang="rw">Ikinyarwanda</button></div>
+    <p class="splash-kicker">Asifiwe &amp; Didier <span aria-hidden="true">·</span> 13 · 12 · 2026</p>
+    <h1 data-rw="Ubutumire bw'ubukwe">Wedding Invitation</h1>
+    <p class="splash-rw" data-rw="Ubutumire bw'ubukwe">Ubutumire bw'ubukwe</p>
+    <div class="splash-language">
+     <p>Choose your language<span data-rw="Hitamo ururimi">Hitamo ururimi</span></p>
+     <div class="row"><button class="btn" data-lang="en">English</button><button class="btn" data-lang="rw">Ikinyarwanda</button></div>
+    </div>
   </div>
  </div>
 </div>
@@ -469,23 +582,46 @@ body.cursor-ready,body.cursor-ready a,body.cursor-ready button,body.cursor-ready
 <section class="hero-band" id="top">
  <div class="hero">
   <div>
-    <h1><span class="hero-name" data-rw="Asifiwe">Asifiwe</span><i>&amp;</i><span class="hero-name" data-rw="Didier">Didier</span></h1>
+   <div class="scroll-prompt" aria-label="Scroll to continue"><span class="mouse" aria-hidden="true"></span><span data-rw="Sura hasi">Scroll</span></div>
+   <h1><span class="hero-name" data-rw="Asifiwe">Asifiwe</span><i>&amp;</i><span class="hero-name" data-rw="Didier">Didier</span></h1>
    <p><span data-rw="13 Ukuboza 2026 · Rubavu - Gisenyi">13 December 2026 · Rubavu - Gisenyi</span></p>
   </div>
-  <div class="ph"><img src="assets/images/couple-full.webp" alt="Asifiwe and Didier in white and cream, standing together in a garden" fetchpriority="high"></div>
+  <div class="ph" aria-label="Wedding portrait collage">
+   <div class="photo-stack" role="group" aria-label="Wedding photo slideshow">
+    <img class="is-active" src="assets/images/couple-full.webp" alt="Asifiwe and Didier in white and cream, standing together in a garden" aria-hidden="false" fetchpriority="high">
+    <img src="assets/images/red-embrace.webp" alt="Asifiwe and Didier embracing in a red-toned portrait" aria-hidden="true" loading="lazy">
+    <img src="assets/images/couple-close.webp" alt="Asifiwe and Didier smiling close together" aria-hidden="true" loading="lazy">
+    <div class="hero-slideshow-controls" aria-label="Slideshow controls">
+     <button class="hero-slide-prev" type="button" aria-label="Previous photo" title="Previous photo">‹</button>
+     <div class="hero-slide-dots" aria-label="Choose photo">
+      <button type="button" aria-label="Show photo 1" aria-pressed="true"></button>
+      <button type="button" aria-label="Show photo 2" aria-pressed="false"></button>
+      <button type="button" aria-label="Show photo 3" aria-pressed="false"></button>
+     </div>
+     <button class="hero-slide-next" type="button" aria-label="Next photo" title="Next photo">›</button>
+   </div>
+   </div>
+  </div>
  </div>
 </section>
 
 <section class="dark inv" id="invitation">
- <div class="wrap">
-  <blockquote data-rw="Bityo rero ntibaba bakiri babiri, ahubwo baba umubiri umwe. Nuko rero icyo Imana yafatanyije, umuntu ntakagitandukanye.">Therefore they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.</blockquote>
-  <cite data-rw="Matayo 19:6">Matthew 19:6</cite>
-  <p data-rw="Umuryango wa">The parents of</p>
-  <p><strong>HABYARIMANA FULGENCE</strong><br><span data-rw="na">and</span> <strong>SAFARI JEAN BOSCO</strong></p>
-  <p data-rw="bishimiye kubatumira mu bukwe bw'abana babo:">request the honor of your presence at the wedding of their children:</p>
-  <div class="names"><span class="formal-name" data-rw="Aline ASIFIWE">Aline ASIFIWE</span><span class="ampersand" data-rw="&amp;">&amp;</span><span class="formal-name" data-rw="Didier DUKUZUMUREMYI">Didier DUKUZUMUREMYI</span></div>
-  <p data-rw="buzaba tariki:">which will take place on:</p>
-  <p class="when">13 / 12 / 2026 · Rubavu - Gisenyi</p>
+ <div class="wrap invite-layout reveal">
+  <div class="photo-panel">
+   <div class="photo-frame">
+    <img src="assets/og-image.webp" alt="Asifiwe and Didier sharing a romantic portrait" loading="lazy">
+   </div>
+  </div>
+  <div class="invitation-card">
+   <blockquote data-rw="Bityo rero ntibaba bakiri babiri, ahubwo baba umubiri umwe. Nuko rero icyo Imana yafatanyije, umuntu ntakagitandukanye.">Therefore they are no longer two, but one flesh. Therefore what God has joined together, let no one separate.</blockquote>
+   <cite data-rw="Matayo 19:6">Matthew 19:6</cite>
+   <p data-rw="Ababyeyi babatumira:">Invited by the parents</p>
+   <p><strong>HABYARIMANA FULGENCE</strong><br><span data-rw="na">and</span> <strong>SAFARI JEAN BOSCO</strong></p>
+   <p data-rw="bishimiye kubatumira mu bukwe bw'abana babo:">request the honor of your presence at the wedding of their children:</p>
+   <div class="names"><span class="formal-name" data-rw="Aline ASIFIWE">Aline ASIFIWE</span><span class="ampersand" data-rw="&amp;">&amp;</span><span class="formal-name" data-rw="Didier DUKUZUMUREMYI">Didier DUKUZUMUREMYI</span></div>
+   <p data-rw="buzaba tariki:">which will take place on:</p>
+   <p class="when">13 / 12 / 2026 · Rubavu - Gisenyi</p>
+  </div>
  </div>
 </section>
 
@@ -586,7 +722,7 @@ body.cursor-ready,body.cursor-ready a,body.cursor-ready button,body.cursor-ready
 </section>
 </main>
 
-<!-- RW: needs native review. New gallery control labels are translated in setLang(). -->
+<!-- RW: needs native review -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo gallery" aria-hidden="true">
  <span class="sr-only" data-rw="Amafoto">Photo gallery</span>
  <button class="lightbox-prev" type="button" aria-label="Previous photo" data-rw="‹">‹</button>
@@ -605,12 +741,27 @@ body.cursor-ready,body.cursor-ready a,body.cursor-ready button,body.cursor-ready
  <h2 data-rw="Kwifatanya natwe bizadushimisha!">We look forward to celebrating with you!</h2>
  <p data-rw="Asifiwe &amp; Didier">Asifiwe &amp; Didier</p>
  <p class="gold">13 / 12 / 2026</p>
- <br><button class="btn" id="share" data-rw="Sangiza ubutumire">Share invitation</button>
- <p style="margin-top:2rem;font-size:.85rem;opacity:.6">© 2026 Asifiwe &amp; Didier</p>
+ <div class="footer-cta">
+  <button class="btn" id="share" data-rw="Sangiza ubutumire">Share invitation</button>
+ </div>
+ <nav class="footer-nav" aria-label="Wedding sections">
+  <a href="#top" data-rw="Hejuru">Home</a>
+  <a href="#invitation" data-rw="Ubutumire">Invitation</a>
+  <a href="#program" data-rw="Gahunda">Program</a>
+  <a href="#countdown" data-rw="Igihe gisigaye">Countdown</a>
+  <a href="#venues" data-rw="Aho bizabera">Venues</a>
+  <a href="#contacts" data-rw="Abo mwavugisha">Contacts</a>
+  <a href="#rsvp" data-rw="Kwemeza">RSVP</a>
+  <a href="#top" data-rw="Hejuru">Back to top ↑</a>
+ </nav>
+ <p class="fine-print">© 2026 Asifiwe &amp; Didier</p>
 </footer>
 
 <button id="music" aria-label="Play background music" aria-pressed="false" hidden></button>
-<audio id="aud" src="assets/audio/Muririmbire%20Uwiteka%20U-Aime.mp3" loop preload="none"></audio>
+<audio id="aud" loop preload="none">
+ <source src="assets/audio/song.mp3" type="audio/mpeg">
+ <source src="assets/audio/Muririmbire%20Uwiteka%20U-Aime.mp3" type="audio/mpeg">
+</audio>
 <!-- Cursor nodes remain pointer-transparent; disabled for coarse pointers in CSS. -->
 <span class="cursor-dot" id="cursorDot" aria-hidden="true"></span><span class="cursor-ring" id="cursorRing" aria-hidden="true"></span>
 
@@ -625,13 +776,30 @@ const FAMILIES = [
 // --------------------
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const CONFIG={cursorLerp:.15,cursorBurstCount:8,cursorBurstDistance:34,cursorBurstDuration:700,particleMobileCount:18,eyeFollowDistance:6,eyeBlinkDuration:320,eyeBlinkMinimum:6000,eyeBlinkRange:2000};
+/* --- cursor --- */
 let lang="en";
 const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)");
 const eyeLogos=$$(".eye-logo");
 const wa=n=>"250"+n.slice(1);
 const lightbox=$("#lightbox"),lightboxImage=$("#lightboxImage");
 const galleryImages=$$(".gal img");
-$("#contactList").innerHTML=FAMILIES.map(f=>`<div><h3 data-rw="${f.rw}">${f.en}</h3><ul>${f.list.map(([n,t])=>`<li><span>${n}</span><span><a href="tel:+${wa(t)}">${t.replace(/(\d{4})(\d{3})(\d{3})/,"$1 $2 $3")}</a> &nbsp;<a href="https://wa.me/${wa(t)}" target="_blank" rel="noopener" aria-label="WhatsApp ${n}">💬</a></span></li>`).join("")}</ul></div>`).join("");
+const getContactMessage=()=>lang==="rw"
+ ? "Muraho, turashimira ko mutwibutsa ubukwe bwa Asifiwe & Didier. Twifuzaga kubamenyesha ko twishimiye kubabwira ko tuzabyitabira."
+ : "Hello, we are so happy to celebrate with you and share in this special moment. Thank you for being part of Asifiwe & Didier's wedding celebration.";
+function refreshContactLinks(){
+ $$("#contactList .contact-btn").forEach(button=>{
+  const name=button.dataset.name,number=button.dataset.phone;
+  const isWhatsApp=button.classList.contains("whatsapp");
+  button.textContent=isWhatsApp?"WhatsApp":(lang==="rw"?"Hamagara":"Call");
+  button.href=isWhatsApp?`https://wa.me/${number}?text=${encodeURIComponent(getContactMessage())}`:`tel:+${number}`;
+  button.setAttribute("aria-label",`${isWhatsApp?"WhatsApp":(lang==="rw"?"Hamagara":"Call")} ${name}`);
+ });
+}
+$("#contactList").innerHTML=FAMILIES.map(f=>`<div><h3 data-rw="${f.rw}">${f.en}</h3><ul>${f.list.map(([n,t])=>{
+ const phone = `+${wa(t)}`;
+ return `<li><span>${n}</span><span class="contact-actions"><a class="contact-btn call" data-name="${n}" data-phone="${wa(t)}" href="tel:${phone}" aria-label="Call ${n}">Call</a><a class="contact-btn whatsapp" data-name="${n}" data-phone="${wa(t)}" href="#" target="_blank" rel="noopener" aria-label="WhatsApp ${n}">WhatsApp</a></span></li>`;
+ }).join("")}</ul></div>`).join("");
+refreshContactLinks();
 /* Calendar markup is generated from Date before data-rw English snapshots. */
 const calendarStage=$("#calendarStage"),weddingCalendar=$("#weddingCalendar"),calendarReplay=$("#calendarReplay"),countdownGrid=$("#countdown .grid");
 const calendarYear=2026,calendarMonth=11,calendarStart=new Date(calendarYear,calendarMonth,1);
@@ -651,6 +819,7 @@ const weekdayMarkup=calendarWeekdays.map(day=>`<span class="calendar-weekday" da
 weddingCalendar.innerHTML=`<div class="calendar-page"><h3 class="calendar-month" data-rw="Ukuboza 2026">December 2026</h3><div class="calendar-weekdays">${weekdayMarkup}</div><div class="calendar-days">${calendarCells.join("")}</div></div><div class="calendar-cover"><div class="calendar-cover-copy"><span data-rw="Itariki y'ubukwe">Save the date</span><span class="calendar-cover-date">13 · 12 · 2026</span></div></div><div class="calendar-rings" aria-hidden="true"><i></i><i></i><i></i></div>`;
 $$("[data-rw]").forEach(e=>e.dataset.en=e.innerHTML);
 function setLang(l){lang=l;document.documentElement.lang=l;
+ refreshContactLinks();
  $$("[data-rw]").forEach(e=>e.innerHTML=l==="rw"?e.dataset.rw:e.dataset.en);
  $$(".lng button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.lang===l));
  weddingCalendar.setAttribute("aria-label",l==="rw"?"Kalendari: Ku Cyumweru, 13 Ukuboza 2026":"Calendar: Sunday, 13 December 2026");
@@ -669,16 +838,16 @@ function closeSplash(){
  pauseSparkles();
  blinkEyes();
  scheduleEyeBlink();
+ startHeroSlideshow();
  window.setTimeout(()=>{if(!entranceStarted){entranceStarted=true;document.body.classList.add("is-open")}},reducedMotion.matches?0:850);
 }
 $$('[data-lang]').forEach(b=>b.onclick=()=>{
  setLang(b.dataset.lang);
  if(b.closest("#splash")){closeSplash();playMusic()}
 });
-$("#start").onclick=()=>$("#splash").classList.add("lang");
 try{const s=localStorage.getItem("lang");if(s==="rw")setLang("rw")}catch(e){}
 /* Reveal whole existing elements once; never wrap translated text. */
-const revealTargets=$$("section h2,section .sub,.inv .wrap>blockquote,.inv .wrap>cite,.inv .wrap>p,.inv .wrap>.names,.prog li,.venues>div,.contacts>div,.rsvp>*,.cd>p,.cd>.btn,.gal img,footer>h2,footer>p,footer>#share");
+const revealTargets=$$("section h2,section .sub,.inv .wrap,.inv .wrap>blockquote,.inv .wrap>cite,.inv .wrap>p,.inv .wrap>.names,.prog li,.venues>div,.contacts>div,.rsvp>*,.cd>p,.cd>.btn,.gal img,footer>h2,footer>p,footer>#share");
 const shareButton=$("#share"),timeline=$(".prog");
 revealTargets.forEach(target=>target.classList.add("reveal"));
 countdownGrid.classList.add("reveal");
@@ -779,6 +948,31 @@ function updateScrollEffects(){
 window.addEventListener("scroll",updateScrollEffects,{passive:true});
 window.addEventListener("resize",updateScrollEffects,{passive:true});
 updateScrollEffects();
+/* One portrait at a time; controls remain usable without automatic motion. */
+const slideshowImages=$$(".hero .photo-stack img"),slideshowDots=$$(".hero-slide-dots button"),slideshowControls=$(".hero-slideshow-controls");
+let activeSlide=0,heroSlideTimer=0;
+function showHeroSlide(index){
+ activeSlide=(index+slideshowImages.length)%slideshowImages.length;
+ slideshowImages.forEach((image,imageIndex)=>{
+  const active=imageIndex===activeSlide;
+  image.classList.toggle("is-active",active);
+  image.setAttribute("aria-hidden",String(!active));
+ });
+ slideshowDots.forEach((dot,dotIndex)=>dot.setAttribute("aria-pressed",String(dotIndex===activeSlide)));
+}
+function startHeroSlideshow(){
+ if(reducedMotion.matches||heroSlideTimer)return;
+ heroSlideTimer=window.setInterval(()=>showHeroSlide(activeSlide+1),5600);
+}
+function stopHeroSlideshow(){window.clearInterval(heroSlideTimer);heroSlideTimer=0}
+$(".hero-slide-prev").addEventListener("click",()=>showHeroSlide(activeSlide-1));
+$(".hero-slide-next").addEventListener("click",()=>showHeroSlide(activeSlide+1));
+slideshowDots.forEach((dot,index)=>dot.addEventListener("click",()=>showHeroSlide(index)));
+slideshowControls.addEventListener("mouseenter",stopHeroSlideshow);
+slideshowControls.addEventListener("mouseleave",startHeroSlideshow);
+slideshowControls.addEventListener("focusin",stopHeroSlideshow);
+slideshowControls.addEventListener("focusout",event=>{if(!slideshowControls.contains(event.relatedTarget))startHeroSlideshow()});
+document.addEventListener("visibilitychange",()=>document.hidden?stopHeroSlideshow():startHeroSlideshow());
 /* Custom cursor: desktop fine pointers only; reduced motion removes lag and bursts. */
 const finePointer=window.matchMedia("(hover: hover) and (pointer: fine)");
 const cursorDot=$("#cursorDot"),cursorRing=$("#cursorRing");
@@ -896,6 +1090,15 @@ lightbox.addEventListener("touchstart",event=>{touchStartX=event.changedTouches[
 lightbox.addEventListener("touchend",event=>{const distance=event.changedTouches[0].clientX-touchStartX;if(Math.abs(distance)>45)stepLightbox(distance<0?1:-1)},{passive:true});
 // Background music and animated disk control.
 const aud=$("#aud"),mb=$("#music");
+const audioCandidates=["assets/audio/song.mp3","assets/audio/Muririmbire%20Uwiteka%20U-Aime.mp3"];
+let audioSourceIndex=0;
+function applyNextAudioSource(){
+ if(audioSourceIndex>=audioCandidates.length-1){mb.hidden=true;syncMusicControl();return;}
+ audioSourceIndex+=1;
+ aud.src=audioCandidates[audioSourceIndex];
+ aud.load();
+ aud.play().catch(syncMusicControl);
+}
 function syncMusicControl(){
  const playing=!aud.paused&&!aud.ended;
  mb.classList.toggle("is-playing",playing);
@@ -906,7 +1109,10 @@ aud.addEventListener("canplay",()=>{mb.hidden=false;syncMusicControl()},{once:tr
 aud.addEventListener("play",syncMusicControl);
 aud.addEventListener("pause",syncMusicControl);
 aud.addEventListener("ended",syncMusicControl);
-aud.addEventListener("error",()=>{mb.hidden=true;syncMusicControl()});
+aud.addEventListener("error",()=>{
+ if(audioSourceIndex<audioCandidates.length-1){applyNextAudioSource();return;}
+ mb.hidden=true;syncMusicControl();
+});
 function playMusic(){aud.play().then(()=>{mb.hidden=false;syncMusicControl()}).catch(syncMusicControl)}
 mb.onclick=()=>{
  if(aud.paused||aud.ended){aud.currentTime=0;aud.play().then(syncMusicControl).catch(syncMusicControl)}
