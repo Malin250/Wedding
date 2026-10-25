@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Asifiwe and Didier//Wedding Invitation//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:asifiwe-didier-wedding-20261213@invitation
+DTSTAMP:20261026T000000Z
+DTSTART;VALUE=DATE:20261213
+DTEND;VALUE=DATE:20261214
+SUMMARY:Wedding of Asifiwe and Didier Dukuzumuremyi
+LOCATION:Rubavu - Gisenyi\, Rwanda
+DESCRIPTION:09:00 Wedding ceremony and reception at Indatwa Wedding Hall (Kwa Mama
+ Micky). 13:00 Religious wedding ceremony at Paroisse Saint Aloys Rambo.
+ 17:00 Reception for invited guests at Indatwa Wedding Hall (Kwa Mama Micky).
+END:VEVENT
+END:VCALENDAR
