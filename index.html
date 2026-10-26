@@ -26,36 +26,44 @@
 <body>
   <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
     <div class="welcome-backdrop" id="welcome-backdrop" aria-hidden="true">
-      <img class="welcome-slide is-active" src="assets/images/couple-close.webp" alt="">
-      <img class="welcome-slide" src="assets/images/couple-full.webp" alt="">
-      <img class="welcome-slide" src="assets/images/red-embrace.webp" alt="">
-      <img class="welcome-slide" src="assets/images/dinner.webp" alt="">
+      <div class="welcome-slide is-active" data-slideshow-slide><img class="slide-main" src="assets/images/couple-close.webp" alt=""></div>
+      <div class="welcome-slide" data-slideshow-slide><img class="slide-main" src="assets/images/couple-full.webp" alt=""></div>
+      <div class="welcome-slide" data-slideshow-slide><img class="slide-main" src="assets/images/red-embrace.webp" alt=""></div>
+      <div class="welcome-slide" data-slideshow-slide><img class="slide-main" src="assets/images/dinner.webp" alt=""></div>
     </div>
     <div class="ambient-lights" id="welcome-lights" aria-hidden="true"></div>
     <div class="welcome-card">
-      <div class="monogram" aria-hidden="true">A<span>&amp;</span>D</div>
-      <p class="eyebrow" data-copy="invitation">Wedding invitation</p>
-      <h1 id="welcome-title" class="visually-hidden">Asifiwe &amp; Didier — 13 December 2026</h1>
-      <button class="invitation-envelope" id="open-invitation" type="button" aria-label="Open Asifiwe and Didier’s wedding invitation" data-aria-copy="cardAria">
-        <span class="invitation-paper">
-          <span class="paper-kicker" data-copy="cardKicker">Together with our families</span>
-          <span class="paper-names"><span>Asifiwe</span><i>&amp;</i><span>Didier</span></span>
-          <span class="paper-fullnames">Asifiwe <i>&amp;</i> Didier Dukuzumuremyi</span>
-          <span class="paper-ornament" aria-hidden="true"><i></i>♡<i></i></span>
-          <span class="paper-date">13 December 2026</span>
-          <span class="paper-place">Rubavu <i>·</i> Gisenyi</span>
-        </span>
-        <span class="envelope-flap" aria-hidden="true"></span>
-        <span class="envelope-seal" aria-hidden="true">A<span>&amp;</span>D</span>
-        <span class="envelope-hint"><span data-copy="cardTap">Tap the card to open</span><i aria-hidden="true">↗</i></span>
-      </button>
-      <p class="welcome-prompt" data-copy="chooseLanguage">Choose your language</p>
-      <div class="language-picker" aria-label="Choose invitation language">
-        <button class="language-button" type="button" data-language="en" aria-pressed="true">English</button>
-        <button class="language-button" type="button" data-language="rw" aria-pressed="false">Ikinyarwanda</button>
+      <div class="welcome-stage welcome-intro-stage" id="welcome-intro-stage">
+        <div class="welcome-logo" aria-hidden="true"><span class="logo-ring"></span><span class="logo-ring logo-ring-inner"></span><span class="welcome-logo-mark">A<span>&amp;</span>D</span><span class="logo-star">✦</span></div>
+        <p class="eyebrow welcome-eyebrow" data-copy="invitation">Wedding invitation</p>
+        <h1 id="welcome-title" class="welcome-title">Asifiwe <span>&amp;</span> Didier</h1>
+        <p class="welcome-copy" data-copy="welcomeCopy">With the blessing of our families, Asifiwe and Didier warmly invite you to celebrate their wedding.</p>
+        <p class="welcome-prompt" data-copy="chooseLanguage">Choose your language</p>
+        <div class="language-picker" aria-label="Choose invitation language">
+          <button class="language-button" type="button" data-language="en" aria-pressed="true">English</button>
+          <button class="language-button" type="button" data-language="rw" aria-pressed="false">Ikinyarwanda</button>
+        </div>
+        <button class="button button-gold continue-button" id="continue-invitation" type="button"><span data-copy="continueInvitation">Continue in English</span><span aria-hidden="true">↗</span></button>
       </div>
-      <p class="welcome-note" data-copy="musicHint">The music begins as the card opens.</p>
+      <div class="welcome-stage welcome-letter-stage" id="welcome-letter-stage" aria-hidden="true">
+        <p class="eyebrow letter-eyebrow" data-copy="letterPrompt">Your invitation is waiting</p>
+        <button class="invitation-envelope" id="open-invitation" type="button" aria-label="Open Asifiwe and Didier’s wedding invitation" data-aria-copy="cardAria">
+          <span class="invitation-paper">
+            <span class="paper-kicker" data-copy="cardKicker">Together with our families</span>
+            <span class="paper-names"><span>Asifiwe</span><i>&amp;</i><span>Didier</span></span>
+            <span class="paper-fullnames">Asifiwe <i>&amp;</i> Didier Dukuzumuremyi</span>
+            <span class="paper-ornament" aria-hidden="true"><i></i>♡<i></i></span>
+            <span class="paper-date">13 December 2026</span>
+            <span class="paper-place">Rubavu <i>·</i> Gisenyi</span>
+          </span>
+          <span class="envelope-flap" aria-hidden="true"></span>
+          <span class="envelope-seal" aria-hidden="true">A<span>&amp;</span>D</span>
+          <span class="envelope-hint"><span data-copy="cardTap">Tap the card to open</span><i aria-hidden="true">↗</i></span>
+        </button>
+        <p class="welcome-note" data-copy="musicHint">The music begins as the card opens.</p>
+      </div>
     </div>
+    <div class="flower-rain" id="flower-rain" aria-hidden="true"></div>
     <span class="welcome-spark spark-one" aria-hidden="true">✧</span>
     <span class="welcome-spark spark-two" aria-hidden="true">✧</span>
     <span class="welcome-spark spark-three" aria-hidden="true">✦</span>
@@ -106,11 +114,11 @@
     <main>
       <section class="hero section-dark" id="home">
         <div class="hero-slideshow" id="hero-slideshow" aria-hidden="true">
-          <img class="hero-slide is-active" src="assets/images/couple-close.webp" alt="">
-          <img class="hero-slide" src="assets/images/couple-full.webp" alt="">
-          <img class="hero-slide" src="assets/images/red-embrace.webp" alt="">
-          <img class="hero-slide" src="assets/images/dinner.webp" alt="">
-          <img class="hero-slide" src="assets/images/bride.webp" alt="">
+          <div class="hero-slide is-active" data-slideshow-slide><img class="slide-main" src="assets/images/couple-close.webp" alt=""></div>
+          <div class="hero-slide" data-slideshow-slide><img class="slide-main" src="assets/images/couple-full.webp" alt=""></div>
+          <div class="hero-slide" data-slideshow-slide><img class="slide-main" src="assets/images/red-embrace.webp" alt=""></div>
+          <div class="hero-slide" data-slideshow-slide><img class="slide-main" src="assets/images/dinner.webp" alt=""></div>
+          <div class="hero-slide" data-slideshow-slide><img class="slide-main" src="assets/images/bride.webp" alt=""></div>
         </div>
         <div class="ambient-lights hero-lights" id="hero-lights" aria-hidden="true"></div>
         <div class="hero-copy">
@@ -179,30 +187,33 @@
         </div>
         <ol class="timeline">
           <li class="timeline-item reveal">
-            <div class="timeline-time"><span>09</span><i>:</i><span>00</span></div>
-            <span class="timeline-node" aria-hidden="true">✦</span>
+            <div class="timeline-time"><strong>09h00</strong><span>9:00 AM</span></div>
+            <span class="timeline-node" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M8 39h32M12 39V18l12-9 12 9v21M20 39V27h8v12M24 9V4m-3 3h6"></path><path d="M18 20h.1M30 20h.1"></path></svg></span>
             <div class="timeline-copy">
               <p class="timeline-tag" data-copy="firstGathering">The first gathering</p>
               <h3 data-copy="ceremonyTitle">Wedding ceremony &amp; reception</h3>
-              <p class="timeline-place">Indatwa Wedding Hall <span>(Kwa Mama Micky)</span></p>
+              <p class="timeline-description" data-copy="eventDescriptionFirst">A joyful traditional celebration with our families.</p>
+              <a class="map-pill" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Indatwa%20Wedding%20Hall%20%28Kwa%20Mama%20Micky%29%2C%20Rubavu%2C%20Rwanda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>Indatwa Wedding Hall (Kwa Mama Micky)</span><b data-copy="directions">Directions on Maps</b></a>
             </div>
           </li>
           <li class="timeline-item reveal">
-            <div class="timeline-time"><span>13</span><i>:</i><span>00</span></div>
-            <span class="timeline-node" aria-hidden="true">✦</span>
+            <div class="timeline-time"><strong>13h00</strong><span>1:00 PM</span></div>
+            <span class="timeline-node" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M7 40h34M11 40V20l13-9 13 9v20M19 40V27h10v13M24 4v7m-4-4h8"></path><path d="m5 19 19-13 19 13"></path></svg></span>
             <div class="timeline-copy">
               <p class="timeline-tag" data-copy="blessing">A sacred blessing</p>
               <h3 data-copy="religiousTitle">Religious wedding ceremony</h3>
-              <p class="timeline-place">Paroisse Saint Aloys Rambo</p>
+              <p class="timeline-description" data-copy="eventDescriptionChurch">Join us for our church wedding ceremony.</p>
+              <a class="map-pill" target="_blank" rel="noopener" href="https://maps.google.com/maps/place//data=!4m2!3m1!1s0x19dd1ba993e7b085:0xefee9be48ae0063d?entry=s&amp;sa=X&amp;ved=2ahUKEwibxebsp9GXAxW0U0EAHX2MKyEQ4kB6BAgDEAA&amp;hl=en&amp;utm_campaign=as-npt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>Paroisse Saint Aloys Rambo · Rubavu - Gisenyi</span><b data-copy="directions">Directions on Maps</b></a>
             </div>
           </li>
           <li class="timeline-item reveal">
-            <div class="timeline-time"><span>17</span><i>:</i><span>00</span></div>
-            <span class="timeline-node" aria-hidden="true">✦</span>
+            <div class="timeline-time"><strong>17h00</strong><span>5:00 PM</span></div>
+            <span class="timeline-node" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M12 39 8 35M8 35l4-4M36 39l4-4m0 0-4-4M12 9l-4 4m0 0 4 4M36 9l4 4m0 0-4 4M24 5v38M5 24h38"></path><path d="M16 24h16M24 16v16"></path></svg></span>
             <div class="timeline-copy">
               <p class="timeline-tag" data-copy="evening">The evening celebration</p>
               <h3 data-copy="receptionTitle">Reception for invited guests</h3>
-              <p class="timeline-place">Indatwa Wedding Hall <span>(Kwa Mama Micky)</span></p>
+              <p class="timeline-description" data-copy="eventDescriptionEvening">Welcoming our guests for an evening of celebration.</p>
+              <a class="map-pill" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Indatwa%20Wedding%20Hall%20%28Kwa%20Mama%20Micky%29%2C%20Rubavu%2C%20Rwanda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><span>Indatwa Wedding Hall (Kwa Mama Micky)</span><b data-copy="directions">Directions on Maps</b></a>
             </div>
           </li>
         </ol>
@@ -246,27 +257,27 @@
           <div class="gallery-viewport" id="gallery-viewport">
             <div class="gallery-track" id="gallery-track">
               <figure class="gallery-slide is-active" aria-roledescription="slide" aria-label="1 of 6">
-                <img src="assets/images/bride.webp" alt="Asifiwe smiling in her white wedding dress" loading="eager">
+                <img class="gallery-photo" src="assets/images/bride.webp" alt="Asifiwe smiling in her white wedding dress" loading="eager">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgAsifiwe">A joyful heart, ready for a lifetime of love.</span><span class="photo-name">Asifiwe</span></figcaption>
               </figure>
               <figure class="gallery-slide" aria-roledescription="slide" aria-label="2 of 6">
-                <img src="assets/images/couple-close.webp" alt="Asifiwe and Didier smiling together" loading="lazy">
+                <img class="gallery-photo" src="assets/images/couple-close.webp" alt="Asifiwe and Didier smiling together" loading="lazy">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgTogether">Together is a beautiful place to be.</span><span class="photo-name">Asifiwe &amp; Didier</span></figcaption>
               </figure>
               <figure class="gallery-slide" aria-roledescription="slide" aria-label="3 of 6">
-                <img src="assets/images/couple-full.webp" alt="Asifiwe and Didier standing together" loading="lazy">
+                <img class="gallery-photo" src="assets/images/couple-full.webp" alt="Asifiwe and Didier standing together" loading="lazy">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgPromise">A promise made for every season.</span><span class="photo-name">Asifiwe &amp; Didier</span></figcaption>
               </figure>
               <figure class="gallery-slide" aria-roledescription="slide" aria-label="4 of 6">
-                <img src="assets/images/red-embrace.webp" alt="Asifiwe and Didier sharing a quiet moment" loading="lazy">
+                <img class="gallery-photo" src="assets/images/red-embrace.webp" alt="Asifiwe and Didier sharing a quiet moment" loading="lazy">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgSide">Every story is sweeter side by side.</span><span class="photo-name">Asifiwe &amp; Didier</span></figcaption>
               </figure>
               <figure class="gallery-slide" aria-roledescription="slide" aria-label="5 of 6">
-                <img src="assets/images/dinner.webp" alt="Asifiwe and Didier sharing a meal" loading="lazy">
+                <img class="gallery-photo" src="assets/images/dinner.webp" alt="Asifiwe and Didier sharing a meal" loading="lazy">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgMoments">The little moments become our favorite memories.</span><span class="photo-name">Asifiwe &amp; Didier</span></figcaption>
               </figure>
               <figure class="gallery-slide" aria-roledescription="slide" aria-label="6 of 6">
-                <img src="assets/images/back-hug.webp" alt="Asifiwe and Didier embracing" loading="lazy">
+                <img class="gallery-photo" src="assets/images/back-hug.webp" alt="Asifiwe and Didier embracing" loading="lazy">
                 <figcaption class="photo-caption"><span class="photo-message" data-copy="galleryMsgHolding">A promise, held close.</span><span class="photo-name">Asifiwe &amp; Didier</span></figcaption>
               </figure>
             </div>
@@ -313,7 +324,7 @@
     </main>
 
     <footer class="site-footer">
-      <a class="footer-monogram" href="#home">S <span>&amp;</span> D</a>
+      <a class="footer-monogram" href="#home">A <span>&amp;</span> D</a>
       <p data-copy="footerLine">With love, Asifiwe &amp; Didier · 13 December 2026 · Rubavu, Rwanda</p>
       <a class="back-top" href="#home" aria-label="Back to top">↑</a>
     </footer>

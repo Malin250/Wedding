@@ -7,7 +7,10 @@
       cardKicker: "Together with our families",
       cardTap: "Tap the card to open",
       cardAria: "Open Asifiwe and Didier’s wedding invitation",
+      welcomeCopy: "With the blessing of our families, Asifiwe and Didier warmly invite you to celebrate their wedding.",
       chooseLanguage: "Choose your language",
+      continueInvitation: "Continue in English",
+      letterPrompt: "Your invitation is waiting",
       musicHint: "The music begins as the card opens.",
       navInvitation: "Invitation",
       navCountdown: "Countdown",
@@ -42,11 +45,15 @@
       programTitle: "Three moments, one beautiful day",
       programSubtitle: "Join us in Rubavu — Gisenyi for a day filled with love, faith and celebration.",
       firstGathering: "The first gathering",
-      ceremonyTitle: "Wedding ceremony & reception",
+      ceremonyTitle: "Traditional family celebration",
       blessing: "A sacred blessing",
       religiousTitle: "Religious wedding ceremony",
       evening: "The evening celebration",
       receptionTitle: "Reception for invited guests",
+      eventDescriptionFirst: "A joyful traditional celebration with our families.",
+      eventDescriptionChurch: "Join us for our church wedding ceremony.",
+      eventDescriptionEvening: "Welcoming our guests for an evening of celebration.",
+      directions: "Directions on Maps",
       localTime: "All listed times are Rwanda local time (CAT).",
       programNote: "We look forward to celebrating with you!",
       where: "Where to join us",
@@ -96,7 +103,10 @@
       cardKicker: "Turi kumwe n’imiryango yacu",
       cardTap: "Kanda ku ikarita uyifungure",
       cardAria: "Fungura ubutumire bw’ubukwe bwa Asifiwe na Didier",
+      welcomeCopy: "Imiryango yacu ibifurije amahoro, Asifiwe na Didier barabatumiye mu birori by’ubukwe bwabo.",
       chooseLanguage: "Hitamo ururimi",
+      continueInvitation: "Komeza mu Kinyarwanda",
+      letterPrompt: "Ubutumire bwawe buragutegereje",
       musicHint: "Indirimbo iracuranga igihe ufungura ikarita.",
       navInvitation: "Ubutumire",
       navCountdown: "Igihe gisigaye",
@@ -136,6 +146,10 @@
       religiousTitle: "Gusezerana imbere y’Imana",
       evening: "Kwizihiza nimugoroba",
       receptionTitle: "Abatumirwa bazakirirwa",
+      eventDescriptionFirst: "Ibirori byo gusaba no gukwa n’imiryango yacu.",
+      eventDescriptionChurch: "Muze twifatanye mu muhango wo gusezerana imbere y’Imana.",
+      eventDescriptionEvening: "Kwakira abashyitsi no kwishimira urukundo.",
+      directions: "Reba inzira kuri Maps",
       localTime: "Amasaha yose yavuzwe ni ay’igihe cyo mu Rwanda (CAT).",
       programNote: "Kwifatanya natwe bizadushimisha!",
       where: "Aho tuzahurira",
@@ -184,13 +198,18 @@
 
   var currentLanguage = "en";
   var welcome = document.getElementById("welcome");
+  var continueButton = document.getElementById("continue-invitation");
   var openButton = document.getElementById("open-invitation");
+  var introStage = document.getElementById("welcome-intro-stage");
+  var letterStage = document.getElementById("welcome-letter-stage");
+  var flowerRain = document.getElementById("flower-rain");
   var music = document.getElementById("wedding-music");
   var musicButton = document.getElementById("music-toggle");
   var musicStatus = document.getElementById("music-status");
   var toast = document.getElementById("toast");
   var menuToggle = document.getElementById("menu-toggle");
   var navigation = document.getElementById("main-navigation");
+  var siteHeader = document.querySelector(".site-header");
   var weddingDate = new Date("2026-12-13T09:00:00+02:00").getTime();
   var toastTimer;
   var openingStarted = false;
@@ -248,7 +267,7 @@
   function initializeSlideshow(containerId, interval) {
     var container = document.getElementById(containerId);
     if (!container || reducedMotion) return;
-    var slides = Array.from(container.querySelectorAll("img"));
+    var slides = Array.from(container.querySelectorAll("[data-slideshow-slide]"));
     if (slides.length < 2) return;
     var activeIndex = Math.max(0, slides.findIndex(function (slide) {
       return slide.classList.contains("is-active");
@@ -283,6 +302,22 @@
       shootingStar.style.setProperty("--shoot-top", (8 + Math.random() * 48).toFixed(1) + "%");
       shootingStar.style.setProperty("--shoot-delay", (-Math.random() * 8.5).toFixed(2) + "s");
       container.appendChild(shootingStar);
+    }
+  }
+
+  function initializeFlowerRain() {
+    if (!flowerRain) return;
+    var flowers = ["✿", "❀", "✽", "✾"];
+    for (var index = 0; index < 34; index += 1) {
+      var flower = document.createElement("span");
+      flower.className = "flower-petal";
+      flower.textContent = flowers[index % flowers.length];
+      flower.style.left = (Math.random() * 100).toFixed(1) + "%";
+      flower.style.setProperty("--flower-delay", (Math.random() * .55).toFixed(2) + "s");
+      flower.style.setProperty("--flower-duration", (1.7 + Math.random() * 1.25).toFixed(2) + "s");
+      flower.style.setProperty("--flower-drift", ((Math.random() - .5) * 170).toFixed(0) + "px");
+      flower.style.setProperty("--flower-size", (12 + Math.random() * 16).toFixed(0) + "px");
+      flowerRain.appendChild(flower);
     }
   }
 
@@ -409,6 +444,13 @@
     });
   });
 
+  continueButton.addEventListener("click", function () {
+    welcome.classList.add("show-letter");
+    introStage.setAttribute("aria-hidden", "true");
+    letterStage.setAttribute("aria-hidden", "false");
+    window.setTimeout(function () { openButton.focus(); }, 350);
+  });
+
   openButton.addEventListener("click", function () {
     if (openingStarted) return;
     openingStarted = true;
@@ -430,7 +472,7 @@
         welcome.setAttribute("aria-hidden", "true");
         document.querySelector(".brand").focus({ preventScroll: true });
       }, 150);
-    }, 1050);
+    }, reducedMotion ? 550 : 3600);
   });
 
   menuToggle.addEventListener("click", function () {
@@ -517,14 +559,24 @@
       document.getElementById(key).textContent = String(values[key]).padStart(2, "0");
     });
   }
+  function syncHeaderSurface() {
+    var hero = document.getElementById("home");
+    if (!siteHeader || !hero) return;
+    siteHeader.classList.toggle("is-solid", hero.getBoundingClientRect().bottom <= siteHeader.offsetHeight + 1);
+  }
+
   initializeSlideshow("welcome-backdrop", 5600);
   initializeSlideshow("hero-slideshow", 5600);
   initializeAmbientLights("welcome-lights");
   initializeAmbientLights("hero-lights");
+  initializeFlowerRain();
   initializeGallery();
   setLanguage("en");
   updateCountdown();
   window.setInterval(updateCountdown, 1000);
+  syncHeaderSurface();
+  window.addEventListener("scroll", syncHeaderSurface, { passive: true });
+  window.addEventListener("resize", syncHeaderSurface);
 
   if ("IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function (entries) {
